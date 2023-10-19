@@ -8,7 +8,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   /* color: rgba(255, 255, 255, 0.87); */
   /* background-color: #000000; */
 
@@ -69,7 +69,10 @@ input[type=number] {
   margin: 0 auto 2rem auto;
   /* width: 90%; */
   padding: 1.5px;
-  background: linear-gradient(45deg, #143546, #1d9ce1);
+  border: none;
+  background: linear-gradient(45deg, rgba(128, 128, 128, 0.303), #1d9ce1a2, rgba(128, 128, 128, 0.303)
+  /* #143546,  */
+  );
   outline: none;
   border-radius: 3px;
   /* border: 0.5px solid gray; */
@@ -79,12 +82,14 @@ input[type=number] {
 .offer-swiper {
   padding-top: 1rem;
   /* border: none; */
-  border: 1px solid rgba(128, 128, 128, 0.295);
+  /* border: 1px solid rgba(128, 128, 128, 0.295); */
+  border: 1px solid #b2b2b272;
   border-radius: 0.5rem;
   width: 90%;
   height: 355px;
   display: flex;
   align-items: center;
+  place-items: center;
   /* padding-left: 2rem; */
 }
 

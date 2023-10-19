@@ -65,7 +65,7 @@ const Cart = ({setShowCart}) => {
                                             </div>
                                             <div className="flex flex-col items-center justify-between">
                                                 {/* <label htmlFor="qty">Qty</label> */}
-                                                <input className="lg:p-2 p-1 lg:text-[1.8rem] text-[1.4rem] h-[40px] lg:h-[60px] w-[50px] lg:w-[100px] focus:outline-none focus:border focus:border-[#b2b2b272]" defaultValue="1" maxLength={6} minLength={1} type="number" name="qty" id="qty" />
+                                                <input className="lg:p-2 p-1 lg:text-[1.8rem] text-[1.4rem] dark:text-white text-black dark:bg-[#143546] bg-white h-[40px] lg:h-[60px] w-[50px] lg:w-[100px] focus:outline-none focus:border dark:focus:border-[#b2b2b272] focus:border-[#748cab]" defaultValue="1" maxLength={6} minLength={1} type="number" name="qty" id="qty" />
                                             </div>
                                             <button onClick={() => dispatch(removeFromCart(item.id))} className="bg-[transparent] h-full flex items-center outline-none lg:p-2 p-0 text-[#cc2626] text-[1.5rem] lg:text-[3rem]">
                                                 <MdDelete />
@@ -95,7 +95,7 @@ const Cart = ({setShowCart}) => {
                             <div className="flex items-center lg:justify-end justify-center">
                                 {cartItems.length > 0 &&
                                     <Link
-                                        to="checkout"
+                                        to="/checkout"
                                         className="flex flex-row gap-x-3 items-center justify-center bg-[#748cab] text-[#0d1321] dark:text-white active:bg-[#3e5c76] dark:hover:bg-[#0d1321] font-bold uppercase text-sm lg:px-6 px-4 lg:py-3 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 mb-1 ease-linear transition-all duration-150"
                                         // onClick={() => console.log(cartItems)}
                                     >

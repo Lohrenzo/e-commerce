@@ -47,11 +47,11 @@ export default function NavBar() {
           </div>
 
           {/* <ToggleMode /> */}
-          <div className="dark:hidden flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
+          <div className="lg:dark:hidden hidden lg:flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
             <BiSolidSun />
           </div>
 
-          <div className="hidden dark:flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
+          <div className="lg:hidden hidden lg:dark:flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
             <BiSolidMoon />
           </div>
 

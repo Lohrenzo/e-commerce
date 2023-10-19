@@ -40,7 +40,7 @@ const ProductCard = ({product}) => {
     
     
     return (
-        <div onMouseOver={mouseOver} onTouchStart={mouseOver} onTouchEnd={mouseOut} onMouseOut={mouseOut} className={`relative card grid grid-cols-1 shadow-lg dark:shadow-[#2e2c2c32] dark:shadow-md lg:w-[220px] md:w-[180px] w-[100px] mx-auto dark:border-none dark:text-white bg-[#] dark:bg-[#0d1321] overflow-hidden rounded-lg`}>
+        <div onMouseOver={mouseOver} onTouchStart={() => setHover(!hover)} onMouseOut={mouseOut} className={`relative card grid grid-cols-1 shadow-lg dark:shadow-[#2e2c2c32] dark:shadow-md lg:w-[220px] md:w-[180px] w-[100px] mx-auto dark:border-none dark:text-white bg-[#] dark:bg-[#0d1321] overflow-hidden rounded-lg`}>
             { hover 
                 ? <img src={product.url2} className="object-cover object-center lg:h-[200px] md:h-[180px] h-[100px] w-full rounded-t-lg" alt=""/> 
                 : <img src={product.url} className="object-cover object-center lg:h-[200px] md:h-[180px] h-[100px] w-full rounded-t-lg" alt=""/>
