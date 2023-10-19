@@ -49,7 +49,7 @@ const Cart = ({setShowCart}) => {
                             >
                                 <IoClose />
                             </button>
-                            <p className="px-2 py-1 align-middle absolute lg:top-[1.4rem] md:top-[1.3rem] top-[3.5rem]  lg:right-20 md:right-20 right-6 opacity-50 lg:text-[1rem] md:text-[0.6rem] text-[0.5rem] border-b-[1px] border-[#b2b2b272] border-t-[1px]">{cartItems ? cartItems.length == 1 ? cartItems.length + " item" : cartItems.length + " items" : 0 + " items"} in Cart</p>
+                            <p className="px-2 pt-1 align-middle absolute lg:top-[1.4rem] md:top-[1.3rem] top-[4.5rem] lg:right-20 md:right-20 right-5 opacity-50 lg:text-[1rem] md:text-[0.6rem] text-[0.5rem] border-b-[1px] border-[#b2b2b272]">{cartItems ? cartItems.length == 1 ? cartItems.length + " item" : cartItems.length + " items" : 0 + " items"} in Cart</p>
                         </div>
                         {/*body*/}
                         <div className="relative max-h-[60vh] overflow-y-auto overflow-x-hidden border-y border-[#b6b6b6cf] p-6 flex-col">

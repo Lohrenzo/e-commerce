@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 // Icons
 import { FaBars } from 'react-icons/fa';
+import { IoClose, IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { BiSolidMoon, BiSolidSun } from 'react-icons/bi';
 
@@ -30,19 +31,19 @@ export default function NavBar() {
               El-Carter!
             </Link>
 
-            <div className="search rounded-lg p-2 hidden lg:flex flex-row items-center justify-center gap-0 w-full">
-              <input type="text" placeholder="Search For Product" className="w-[50%] dark:bg-[#1D2D44] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 p-2 rounded-l-md outline-none focus:outline-none"/>
-              <button className="p-3 border border-[#1D2D44] active:border-[#01497C] bg-[#1D2D44] text-white rounded-r-md outline-none focus:outline-none">
+            <div className="search rounded-lg p-2 hidden md:flex lg:flex flex-row items-center justify-center gap-0 w-full">
+              <input type="text" placeholder="Search For Products" className="w-[50%] dark:bg-[#1D2D44] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 lg:p-2 md:p-1 rounded-l-md outline-none focus:outline-none"/>
+              <button className="lg:p-3 md:p-2 border border-[#1D2D44] active:border-[#01497C] bg-[#1D2D44] text-white rounded-r-md outline-none focus:outline-none">
                 <BiSearchAlt2 />
               </button>
             </div>
 
             <button
-              className="text-white cursor-pointer text-[2rem] leading-none px-0 py-1 border-none rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+              className="text-white cursor-pointer text-[2rem] leading-none px-0 py-1 border-none rounded bg-transparent block lg:hidden md:hidden active:bg-transparent focus:bg-transparent outline-none focus:outline-none"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <FaBars />
+              {navbarOpen ? <IoChevronUp /> : <IoChevronDown />}
             </button>
           </div>
 
@@ -88,7 +89,7 @@ export default function NavBar() {
                 </a>
               </li> */}
               <div className="lg:hidden rounded-lg flex flex-row gap-0 mt-2 w-full">
-                <input type="text" placeholder="Search For Product" className="w-[100%] dark:bg-[#1D2D44] text-[gray] lg:text-base text-[0.8rem] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 p-1 rounded-l-md outline-none focus:outline-none"/>
+                <input type="text" placeholder="Search For Products" className="w-[100%] dark:bg-[#1D2D44] text-[gray] lg:text-base text-[0.8rem] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 p-1 rounded-l-md outline-none focus:outline-none"/>
                 <button className="p-2 border border-[#1D2D44] active:border-[#01497C] bg-[#1D2D44] rounded-r-md outline-none focus:outline-none">
                   <BiSearchAlt2 />
                 </button>
