@@ -9,7 +9,7 @@ import { IoClose, IoChevronDown, IoChevronUp } from "react-icons/io5";
 // Redux
 import { useSelector } from 'react-redux';
 
-export function DeliveryAddress () {
+export default function DeliveryAddress () {
     const { cartItems } = useSelector(state => state.cart);
     const [isOpened, setIsOpened] = useState(false);
     
