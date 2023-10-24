@@ -9,7 +9,7 @@ import { IoClose, IoChevronDown, IoChevronUp } from "react-icons/io5";
 // Redux
 import { useSelector } from 'react-redux';
 
-export function OrderSummary () {
+export default function OrderSummary () {
     const { cartItems } = useSelector(state => state.cart);
     const [isOpened, setIsOpened] = useState(true);
     
