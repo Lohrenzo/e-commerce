@@ -21,11 +21,11 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className={`flex flex-wrap items-center justify-between fixed top-0 w-full lg:fixed z-30 px-0 py-8 dark:bg-[#0d1321] bg-[#3e5c76] mb-3`}>
+      <nav className={`flex flex-wrap items-center justify-between fixed top-0 w-full lg:fixed z-30 px-0 lg:py-8 md:py-6 py-2 dark:bg-[#0d1321] bg-[#3e5c76] mb-3`}>
         <div className="w-full mx-12 flex flex-wrap items-center justify-between">
           <div className="w-full flex justify-between items-center lg:w-auto lg:flex-grow lg:gap-x-4 lg:justify-start">
             <Link
-              className="text-[1.3rem] font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+              className="lg:text-[1.3rem] md:text-[1rem] text-[0.9rem] font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
               to="/"
             >
               El-Carter!
@@ -39,7 +39,7 @@ export default function NavBar() {
             </div>
 
             <button
-              className="text-white cursor-pointer text-[2rem] leading-none px-0 py-1 border-none rounded bg-transparent block lg:hidden md:hidden active:bg-transparent focus:bg-transparent outline-none focus:outline-none"
+              className="text-white cursor-pointer lg:text-[2rem] md:text-[1.8rem] text-[1.4rem] leading-none px-0 py-1 border-none rounded bg-transparent block lg:hidden md:hidden active:bg-transparent focus:bg-transparent outline-none focus:outline-none"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >

@@ -23,7 +23,7 @@ export function OrderSummary () {
         <div className="w-full lg:text-base md:text-base sm:text-[0.9rem] text-[0.8rem] border mb-1">
             <div onClick={() => setIsOpened(!isOpened)} className="accordion-head w-full items-center cursor-pointer justify-between px-3 py-2 flex">
                 <CheckoutHeaders header={"Order Summary"} />
-                <div className="p-2 opacity-50 lg:text-[1.3rem] text-base accordion-btn" onClick={() => setIsOpened(!isOpened)}>
+                <div className="p-2 opacity-50 lg:text-[1.3rem] md:text-[1.2rem] text-base accordion-btn" onClick={() => setIsOpened(!isOpened)}>
                     {isOpened ? 
                         <IoChevronUp /> :
                         <IoChevronDown />
