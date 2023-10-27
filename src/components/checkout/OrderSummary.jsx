@@ -9,16 +9,9 @@ import { IoClose, IoChevronDown, IoChevronUp } from "react-icons/io5";
 // Redux
 import { useSelector } from 'react-redux';
 
-export default function OrderSummary () {
-    const { cartItems } = useSelector(state => state.cart);
+export default function OrderSummary ({cartItems, subTotal, deliveryFee, vat, totalAmount}) {
     const [isOpened, setIsOpened] = useState(true);
     
-    // Calculate the total amount
-    const subTotal = cartItems.reduce((total, item) => total + item.newPrice, 0);
-    const deliveryFee = (2/100) * subTotal;
-    const vat = (3/100) * subTotal;
-    const totalAmount = subTotal + deliveryFee + vat;
-
     return (
         <div className="w-full lg:text-base md:text-base sm:text-[0.9rem] text-[0.8rem] border mb-1">
             <div onClick={() => setIsOpened(!isOpened)} className="accordion-head w-full items-center cursor-pointer justify-between px-3 py-2 flex">

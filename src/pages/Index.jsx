@@ -13,12 +13,10 @@ import CartButton from '../components/CartButton';
 import { products } from '../data/products';
 
 
-const Index = () => {
-
-    const [showCart, setShowCart] = useState(false);
+const Index = ({showCart, setShowCart}) => {
 
     return (
-        <>
+        <div className=' h-full pb-2'>
             <CartButton showCart={showCart} setShowCart={setShowCart}/>
             <BannerSwiper />
             <section className='products'>
@@ -37,7 +35,7 @@ const Index = () => {
             {showCart ? (
                 <Cart products={products} setShowCart={setShowCart}/>
             ) : null}
-        </>
+        </div>
     )
 }
 

@@ -6,8 +6,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Icons
-import { FaBars } from 'react-icons/fa';
-import { IoClose, IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { HiMenuAlt3, HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
+import { IoClose, IoMenu, IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { BiSolidMoon, BiSolidSun } from 'react-icons/bi';
 
@@ -15,13 +15,13 @@ import { BiSolidMoon, BiSolidSun } from 'react-icons/bi';
 // ${isDarkMode ? 'bg-[#0d1321]' : 'bg-[#3e5c76]'}
 
 
-export default function NavBar() {
+export default function NavBar({searchQuery, setSearchQuery, handleSearch}) {
   // const isDarkMode = useSelector((state) => state.mode.isDarkMode);
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
     <>
-      <nav className={`flex flex-wrap items-center justify-between fixed top-0 w-full lg:fixed z-30 px-0 lg:py-8 md:py-6 py-2 dark:bg-[#0d1321] bg-[#3e5c76] mb-3`}>
+      <nav className={`flex flex-wrap items-center justify-between fixed top-0 w-full lg:fixed z-30 px-0 lg:py-8 md:py-6 py-2 dark:bg-[#0d1321] bg-[#3e5c76] mb-3 shadow-md shadow-[#80808095] dark:shadow-[#3e3e3e41]`}>
         <div className="w-full mx-12 flex flex-wrap items-center justify-between">
           <div className="w-full flex justify-between items-center lg:w-auto lg:flex-grow lg:gap-x-4 lg:justify-start">
             <Link
@@ -32,27 +32,33 @@ export default function NavBar() {
             </Link>
 
             <div className="search rounded-lg p-2 hidden md:flex lg:flex flex-row items-center justify-center gap-0 w-full">
-              <input type="text" placeholder="Search For Products" className="w-[50%] dark:bg-[#1D2D44] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 lg:p-2 md:p-1 rounded-l-md outline-none focus:outline-none"/>
-              <button className="lg:p-3 md:p-2 border border-[#1D2D44] active:border-[#01497C] bg-[#1D2D44] text-white rounded-r-md outline-none focus:outline-none">
+              <input 
+                type="text" 
+                placeholder="Search For Products" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)} // Handle input change
+                className="w-[50%] dark:bg-[#1D2D44] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 lg:p-2 md:p-1 rounded-l-md outline-none focus:outline-none"
+              />
+              <Link to="/search" onClick={handleSearch} className="lg:p-3 md:p-2 border border-[#1D2D44] active:border-[#01497C] bg-[#1D2D44] text-white rounded-r-md outline-none focus:outline-none">
                 <BiSearchAlt2 />
-              </button>
+              </Link>
             </div>
 
             <button
-              className="text-white cursor-pointer lg:text-[2rem] md:text-[1.8rem] text-[1.4rem] leading-none px-0 py-1 border-none rounded bg-transparent block lg:hidden md:hidden active:bg-transparent focus:bg-transparent outline-none focus:outline-none"
+              className="text-white cursor-pointer lg:text-[2rem] md:text-[1.9rem] text-[1.8rem] leading-none px-0 py-1 border-none rounded bg-transparent block lg:hidden md:hidden active:bg-transparent focus:bg-transparent outline-none focus:outline-none active:opacity-50"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              {navbarOpen ? <IoChevronUp /> : <IoChevronDown />}
+              {navbarOpen ? <HiOutlineX style={{fontWeight: 800}}/> : <HiOutlineMenuAlt3 style={{fontWeight: 800}}/>}
             </button>
           </div>
 
-          {/* <ToggleMode /> */}
-          <div className="lg:dark:hidden hidden lg:flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
+          {/* <Mode /> */}
+          <div title="Your Browser Is Currently On Light Mode" className="lg:dark:hidden hidden lg:flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
             <BiSolidSun />
           </div>
 
-          <div className="lg:hidden hidden lg:dark:flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
+          <div title="Your Browser Is Currently On Dark Mode" className="lg:hidden hidden lg:dark:flex lg:text-[1.3rem] md:text-[1rem] text-white text-[0.7rem] font-bold border-none p-3 m-0 opacity-70 dark:bg-[#0d1321] bg-[#3e5c76] gap-2 items-center justify-center">
             <BiSolidMoon />
           </div>
 
@@ -89,10 +95,16 @@ export default function NavBar() {
                 </a>
               </li> */}
               <div className="lg:hidden rounded-lg flex flex-row gap-0 mt-2 w-full">
-                <input type="text" placeholder="Search For Products" className="w-[100%] dark:bg-[#1D2D44] text-[gray] lg:text-base text-[0.8rem] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 p-1 rounded-l-md outline-none focus:outline-none"/>
-                <button className="p-2 border border-[#1D2D44] active:border-[#01497C] bg-[#1D2D44] rounded-r-md outline-none focus:outline-none">
+                <input 
+                  type="text" 
+                  placeholder="Search For Products" 
+                  value={searchQuery} 
+                  onChange={(e) => setSearchQuery(e.target.value)} // Handle input change
+                  className="w-[100%] dark:bg-[#1D2D44] text-[gray] lg:text-base text-[0.8rem] border border-[#1D2D44] focus:border-[#01497C] transition-all duration-150 p-1 rounded-l-md outline-none focus:outline-none"
+                />
+                <Link to="/search" onClick={handleSearch} className="p-2 border border-[#1D2D44] active:border-[#01497C] bg-[#1D2D44] rounded-r-md outline-none focus:outline-none">
                   <BiSearchAlt2 />
-                </button>
+                </Link>
               </div>
             {/* </ul> */}
           </div>

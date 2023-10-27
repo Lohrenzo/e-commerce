@@ -42,10 +42,10 @@ const ProductCard = ({product}) => {
             // Reset the loading state after the notification delay
             setTimeout(() => {
                 setIsLoading(false);
-            }, 3000); // 3 seconds for the notification
+            }, 2000); // 2 seconds for the notification
             
             // Set the notification message
-            setNotification(`${product.productName} has been added to your cart`);
+            setNotification(`${product.productName}`);
 
         }, 2000); // Simulated API call delay (2 seconds)
 

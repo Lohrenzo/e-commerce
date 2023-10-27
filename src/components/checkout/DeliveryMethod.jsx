@@ -9,7 +9,7 @@ import { IoClose, IoChevronDown, IoChevronUp } from "react-icons/io5";
 // Redux
 import { useSelector } from 'react-redux';
 
-export default function DeliveryMethod() {
+export default function DeliveryMethod({selectedDeliveryMethod, setSelectedDeliveryMethod}) {
     const { cartItems } = useSelector(state => state.cart);
     const [isOpened, setIsOpened] = useState(false);
     
@@ -42,17 +42,17 @@ export default function DeliveryMethod() {
                             </div>
                         </div> */}
                         <div>
-                            <p className="my-2 capitalize font-semibold capitalize text-[0.8rem]">door delivery</p>
+                            <p className="my-2 capitalize font-semibold text-[0.8rem]">door delivery</p>
                             <div className="flex justify-start items-center gap-x-2 flex-row bg-[#b2b2b225] p-3 lg:text-[0.8rem] text-[0.6rem]">
-                                <input className="cursor-pointer" type="checkbox" name="cards" id="cards" />
-                                <label htmlFor="cards" className="mb-1 cursor-pointer">Get you package delivered to your door step.</label>
+                                <input className="cursor-pointer" type="radio" name="delivery-method" id="door-delivery" value="door-delivery" checked={selectedDeliveryMethod === "door-delivery"} onChange={() => setSelectedDeliveryMethod("door-delivery")}/>
+                                <label htmlFor="door-delivery" className="mb-1 cursor-pointer">Get your order delivered to your door step.</label>
                             </div>
                         </div>
                         <div>
-                            <p className="my-2 capitalize font-semibold capitalize text-[0.8rem]">Store pick-up</p>
+                            <p className="my-2 capitalize font-semibold text-[0.8rem]">Store pick-up</p>
                             <div className="flex justify-start items-center gap-x-2 flex-row bg-[#b2b2b225] p-3 lg:text-[0.8rem] text-[0.6rem]">
-                                <input className="cursor-pointer" type="checkbox" name="on-delivery" id="on-delivery" />
-                                <label htmlFor="on-delivery" className="mb-1 cursor-pointer">Pick up your package from our store.</label>
+                                <input className="cursor-pointer" type="radio" name="delivery-method" id="store-pickup" value="store-pickup" checked={selectedDeliveryMethod === "store-pickup"} onChange={() => setSelectedDeliveryMethod("store-pickup")}/>
+                                <label htmlFor="store-pickup" className="mb-1 cursor-pointer">Pick up your order from our store.</label>
                             </div>
                         </div>
                     </div>

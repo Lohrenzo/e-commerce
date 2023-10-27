@@ -1,7 +1,7 @@
 export default function SectionHeaders(props) {
     return (
         <>
-            <h2 className='text-center lg:text-[2.6rem] md:text-[1.3rem] text-[0.9rem] font-bold mb-2 capitalize'>{props.header}</h2>
+            <h2 className='text-center lg:text-[2.2rem] md:text-[1.8rem] sm:text-[1.4rem] text-[1rem] font-bold mb-1 capitalize'>{props.header}</h2>
             <hr className='header-line w-[90%]'/>
         </>
     )
