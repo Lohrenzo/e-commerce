@@ -30,7 +30,7 @@ export default function NavBar({searchQuery, setSearchQuery, handleSearch}) {
             >
               El-Carter!
             </Link>
-
+            
             <div className="search rounded-lg p-2 hidden md:flex lg:flex flex-row items-center justify-center gap-0 w-full">
               <input 
                 type="text" 

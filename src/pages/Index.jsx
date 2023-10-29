@@ -13,7 +13,7 @@ import CartButton from '../components/CartButton';
 import { products } from '../data/products';
 
 
-const Index = ({showCart, setShowCart}) => {
+const Index = ({showCart, setShowCart, filteredProducts}) => {
 
     return (
         <div className=' h-full pb-2'>
@@ -23,11 +23,12 @@ const Index = ({showCart, setShowCart}) => {
                 <SectionHeaders header="Products"/>
                 <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 w-[90%] mb-4 gap-y-8 lg:gap-x-0 md:gap-x-2 mx-auto'>
                     {products.map((product, index) => (
+                    // {products.map((product, index) => (
                         <ProductCard key={index} product={product}/>
                     ))}
                 </div>
             </section>
-            <section className="offers">
+            <section className="offers pt-4">
                 <SectionHeaders header="Special Offers"/>
                 <Offers />
             </section>

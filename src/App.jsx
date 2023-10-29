@@ -36,7 +36,7 @@ function App() {
   return (
     <main className={`bg-white text-black dark:bg-[#1d2d44] dark:text-white`}>
       <Routes>
-        <Route exact path='/' element={<Index showCart={showCart} setShowCart={setShowCart} />} />
+        <Route exact path='/' element={<Index showCart={showCart} setShowCart={setShowCart} filteredProducts={filteredProducts}/>} />
         <Route exact path='/search' element={<Search showCart={showCart} setShowCart={setShowCart} filteredProducts={filteredProducts} />} />
         <Route path='/checkout' element={<Checkout />} />
       </Routes>

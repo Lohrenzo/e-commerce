@@ -55,7 +55,7 @@ export default function Offers() {
                     ))}
                 </Swiper>
             </div>
-            <div className='grid justify-center items-center grid-cols-3 sm:grid-cols-4 md:grid-cols-4 rounded-lg border-[#b2b2b272] border mb-3 p-1 lg:mx-0 md:mx-8 mx-5 gap-y-3 lg:hidden'>
+            <div className='grid justify-center items-center grid-cols-3 sm:grid-cols-4 md:grid-cols-4 rounded-lg mb-3 px-1 lg:mx-0 md:mx-8 mx-5 gap-y-3 lg:hidden'>
                 {products.filter((product) => {
                     return product.promoPercentage > 0;
                 }).map((product, index) => (

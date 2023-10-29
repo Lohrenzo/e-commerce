@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 // Redux
@@ -17,8 +17,16 @@ import CheckoutConfirmation from '../components/checkout/CheckoutConfirmation';
 export default function Checkout () {
     const { cartItems } = useSelector(state => state.cart);
     
+    const [subTotal, setSubTotal] = useState(0);
+
+    // Calculate the subtotal whenever cartItems change
+    useEffect(() => {
+        const newSubTotal = cartItems.reduce((total, item) => total + item.product.newPrice * item.quantity, 0);
+        setSubTotal(newSubTotal);
+    }, [cartItems]);
+
     // Calculate the total amount
-    const subTotal = cartItems.reduce((total, item) => total + item.newPrice, 0);
+    // const subTotal = cartItems.reduce((total, item) => total + item.newPrice, 0);
     const deliveryFee = (2/100) * subTotal;
     const vat = (3/100) * subTotal;
     const totalAmount = subTotal + deliveryFee + vat;

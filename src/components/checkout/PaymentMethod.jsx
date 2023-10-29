@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 export default function PaymentMethod({selectedPaymentMethod, setSelectedPaymentMethod}) {
     const { cartItems } = useSelector(state => state.cart);
-    const [isOpened, setIsOpened] = useState(false);
+    const [isOpened, setIsOpened] = useState(true);
     
     // Calculate the total amount
     const subTotal = cartItems.reduce((total, item) => total + item.newPrice, 0);

@@ -20,6 +20,13 @@ const ProductCard = ({product}) => {
     const [hover, setHover] = useState(false);
     const dispatch = useDispatch();
 
+    const { cartItems } = useSelector(state => state.cart);
+    // Or
+    // const cartItems = useSelector(state => state.cart.cartItems);
+
+    // Check if the product is already in the cart
+    const isProductInCart = cartItems.some((item) => item.product.id === product.id);
+
     const mouseOver = () => {
         setHover(true);
         // console.log("Hovered");
@@ -36,8 +43,9 @@ const ProductCard = ({product}) => {
 
         // Simulate an API call with a delay to demonstrate the loading spinner
         setTimeout(() => {
+            
             // Dispatch the addToCart action with the item details
-            dispatch(addToCart(product));
+            dispatch(addToCart({ product }));
 
             // Reset the loading state after the notification delay
             setTimeout(() => {
@@ -71,7 +79,7 @@ const ProductCard = ({product}) => {
                         <p className="text-[red] lg:text-[0.7rem] text-[0.44rem] font-bold rotate-[-20deg]">{product.promoPercentage}% Off</p>
                     </div>
                 }
-                <CardButton isLoading={isLoading} handleAddToCartClick={handleAddToCartClick}/>
+                <CardButton isProductInCart={isProductInCart} isLoading={isLoading} handleAddToCartClick={handleAddToCartClick}/>
             </div>
             {notification && (
                 <Notification message={notification} onClose={() => setNotification(null)} />

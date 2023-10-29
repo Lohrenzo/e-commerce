@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // Icons
 import { IoClose } from "react-icons/io5";
 import { BsCartCheckFill } from "react-icons/bs";
@@ -5,7 +7,7 @@ import { MdDelete } from "react-icons/md";
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeFromCart } from "../redux/cartSlice";
+import { addToCart, removeFromCart, decreaseCartItemQuantity } from "../redux/cartSlice";
 
 import { Link } from "react-router-dom";
 
@@ -16,6 +18,24 @@ const Cart = ({setShowCart}) => {
     // const cartItems = useSelector(state => state.cart.cartItems);
     const dispatch = useDispatch();
 
+    const [subTotal, setSubTotal] = useState(0);
+
+    // Calculate the subtotal whenever cartItems change
+    useEffect(() => {
+        const newSubTotal = cartItems.reduce((total, item) => total + item.product.newPrice * item.quantity, 0);
+        setSubTotal(newSubTotal);
+    }, [cartItems]);
+
+    const increaseQuantity = (item) => {
+        dispatch(addToCart({ product: item.product })); // Add one to the cart
+    };
+    
+    const decreaseQuantity = (item) => {
+        if (item.quantity > 1) {
+            dispatch(decreaseCartItemQuantity(item.product.id)); // Decrease the quantity of the item in the cart
+        }
+    };
+    
     // const removeFromCartClick = () => {
     //     // Dispatch the addToCart action with the item details
     //     dispatch(removeFromCart(products));
@@ -23,12 +43,12 @@ const Cart = ({setShowCart}) => {
     // };
 
     // Calculate the total amount
-    const subTotal = cartItems.reduce((total, item) => total + item.newPrice, 0);
+    // const subTotal = cartItems.reduce((total, item) => total + item.product.newPrice, 0);
 
-    const proceedToCheckout = () => {
-        // You can use the totalAmount for further actions, e.g., passing it to a payment gateway.
-        console.log("Total Amount:", subTotal);
-    };
+    // const proceedToCheckout = () => {
+    //     // You can use the totalAmount for further actions, e.g., passing it to a payment gateway.
+    //     console.log("Total Amount:", subTotal);
+    // };
 
 
     return (
@@ -57,17 +77,29 @@ const Cart = ({setShowCart}) => {
                                 (
                                     cartItems.map((item, index) => (
                                         <div key={index} className="overflow-hidden flex flex-row items-center gap-x-3 lg:mt-6 py-4 px-5 text-blueGray-500 leading-relaxed border-b-2 border-[#b2b2b272]">
-                                            <img className=" object-cover object-center rounded-sm h-[30px] w-[80px] lg:h-[130px] lg:w-[180px]" src={item.url} alt={item.productName} />
+                                            <img className=" object-cover object-center rounded-sm h-[30px] w-[80px] lg:h-[130px] lg:w-[180px]" src={item.product.url} alt={item.product.productName} />
                                             <div className="flex flex-col w-[50%] gap-2">
-                                                <p className="text-[0.95rem] w-fit cursor-default font-bold hover:underline duration-150 transition-all">{item.productName}</p>
-                                                <p className="lg:text-[0.8rem] text-[0.6rem] leading-none lg:leading-normal opacity-50">{item.description}</p>
-                                                <p className="lg:text-[1.2rem] text-[0.9rem]">&#x20A6; {item.newPrice.toLocaleString(undefined, {maximumFractionDigits:2}) }</p>
+                                                <p className="text-[0.95rem] w-fit cursor-default font-bold hover:underline duration-150 transition-all">{item.product.productName}</p>
+                                                <p className="lg:text-[0.8rem] text-[0.6rem] leading-none lg:leading-normal opacity-50">{item.product.description}</p>
+                                                <p className="lg:text-[1.2rem] text-[0.9rem]">&#x20A6; {item.product.newPrice.toLocaleString(undefined, {maximumFractionDigits:2}) }</p>
                                             </div>
                                             <div className="flex flex-col items-center justify-between">
                                                 {/* <label htmlFor="qty">Qty</label> */}
-                                                <input className="lg:p-2 p-1 lg:text-[1.8rem] text-[1.4rem] dark:text-white text-black dark:bg-[#143546] bg-white h-[40px] lg:h-[60px] w-[50px] lg:w-[100px] focus:outline-none focus:border dark:focus:border-[#b2b2b272] focus:border-[#748cab]" defaultValue="1" maxLength={6} minLength={1} type="number" name="qty" id="qty" />
+                                                <button onClick={() => decreaseQuantity(item)} className="text-[#cc2626] text-[1.5rem] lg:text-[3rem]">-</button>
+                                                <input 
+                                                    readOnly 
+                                                    value={item.quantity} 
+                                                    onChange={(e) => {
+                                                        // Ensure the value is a positive integer
+                                                        const newQuantity = parseInt(e.target.value) || 1;
+                                                        dispatch(decreaseCartItemQuantity({ id: cartItem.product.id, newQuantity }));
+                                                    }}                           
+                                                    className="lg:p-2 p-1 lg:text-[1.8rem] text-[1.4rem] dark:text-white text-black dark:bg-[#143546] bg-white h-[40px] lg:h-[60px] w-[50px] lg:w-[100px] focus:outline-none focus:border dark:focus:border-[#b2b2b272] focus:border-[#748cab]" 
+                                                    maxLength={6} minLength={1} type="number" name="qty" id="qty" 
+                                                />
+                                                <button onClick={() => increaseQuantity(item)} className="text-[#00a2ff] text-[1.5rem] lg:text-[3rem]">+</button>
                                             </div>
-                                            <button onClick={() => dispatch(removeFromCart(item.id))} className="bg-[transparent] h-full flex items-center outline-none lg:p-2 p-0 text-[#cc2626] text-[1.5rem] lg:text-[3rem]">
+                                            <button onClick={() => dispatch(removeFromCart(item.product.id))} className="bg-[transparent] h-full flex items-center outline-none lg:p-2 p-0 text-[#cc2626] text-[1.5rem] lg:text-[3rem]">
                                                 <MdDelete />
                                             </button>
                                         </div>

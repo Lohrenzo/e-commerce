@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 
 export default function CustomerDetails ({selectedDeliveryMethod, address, setAddress, storeAddress, contactDetails, setContactDetails}) {
     const { cartItems } = useSelector(state => state.cart);
-    const [isOpened, setIsOpened] = useState(false);
+    const [isOpened, setIsOpened] = useState(true);
     const [emailMessage, setEmailMessage] = useState("");
     const [phoneNumberMessage, setPhoneNumberMessage] = useState("");
 
